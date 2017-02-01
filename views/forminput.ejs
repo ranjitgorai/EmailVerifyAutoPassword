@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  </head>
+<body>
+<br>
+<div class="container well well-lg ">
+   <center><h3><b>SignUp Form</b></h3></center>
+<hr>
+<form class="form-horizontal" role="form" id="myform" >
+	<div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">First_Name</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="fname" type="text" />
+		</div>
+		</div>
+	</div>
+    
+    <div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">Last_Name</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="lname" type="text" />
+		</div>
+        </div>
+	</div>
+	<div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">Email</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="email" type="email" />
+		</div>
+        </div>
+	</div>
+
+	<div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">Phone</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="phone" type="number" />
+		</div>
+        </div>
+	</div>
+	<div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">City</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="city" type="text" />
+		</div>
+        </div>
+	</div>
+    <div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">State</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="state" type="text" />
+		</div>
+        </div>
+	</div>
+	<div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">Pin</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="pin" type="number" />
+		</div>
+        </div>
+	</div>
+	<div class="col-sm-6">
+	    <div class="form-group">
+		<label class="col-sm-2 control-label">Country</label>
+		<div class="col-sm-7">
+		<input class="form-control" id="country" type="text" />
+		</div>
+        </div>
+	</div>
+
+<div class="form-footer" align="center">
+<button type="submit"  name="submit" class="btn btn-success" id="submit_btn">Submit</button>
+</div> 
+
+    
+</form>
+</div><!--container-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	
+ $(document).ready(function(){
+         
+   $('#submit_btn').click(function(e){
+      	e.preventDefault();
+
+        var dat = {
+
+        	name :
+					  {
+						firstname: $('#fname').val(),
+						lastname: $('#lname').val(),
+					 },
+		     mail : $('#email').val(),
+		     phone : $('#phone').val(),
+		     address :
+					 {
+
+					 city: $('#city').val(),
+					 state: $('#state').val(),
+					 pin: $('#pin').val(),
+				     country: $('#country').val()
+					}
+
+        };
+    $.ajax({
+
+
+			 method : "POST",
+
+			url : "/formApp",
+
+		  data : dat,
+
+		success : function(result){
+
+                    if(!result.error)
+                    {
+                    	alert("Your Login Password was send in Your Email");
+                    }
+                    else{
+                    	alert("error");
+                    }
+		}
+
+
+	}); //ajax
+
+    
+
+   });
+
+
+});
+
+</script>
+
+
+</body>
+</html>
